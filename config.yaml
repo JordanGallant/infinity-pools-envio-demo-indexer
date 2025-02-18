@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: infinity-pools
+networks:
+- id: 8453
+  start_block: 0
+  contracts:
+  - name: ERC1967Proxy
+    address:
+    - 0xF8FAD01B2902fF57460552C920233682c7c011a7
+    handler: src/EventHandlers.ts
+    events:
+    - event: Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)
+    - event: ApprovalForAll(address indexed owner, address indexed operator, bool approved)
+    - event: Deposit(address indexed token, address indexed to, uint256 amount)
+    - event: DepositCollateral(address indexed user, address indexed poolAddress, bool token, uint8 decimals, address source, uint256 amount)
+    - event: Initialized(uint64 version)
+    - event: NoOpSwapperIds(uint256[] ids)
+    - event: PeripheryLiquidityAdded(address indexed user, address indexed pool, uint256 indexed lpNum, int256 amount0, int256 amount1, int256 earnEra)
+    - event: Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
+    - event: Upgraded(address indexed implementation)
+    - event: Withdraw(address indexed token, address indexed from, uint256 amount)
+    - event: WithdrawCollateral(address indexed user, address indexed poolAddress, bool token, uint8 decimals, address destination, uint256 amount)
+rollback_on_reorg: false
